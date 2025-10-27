@@ -6,6 +6,59 @@
     "profession": "Professeur",
     "phone": "07 08 13 92 51",
     "avatar": "👨‍💼",
+    "photo": "/images/uploads/team/komenan-maurille.jpg",
     "order": 1
+  },
+  {
+    "slug": "karidioula-gerard",
+    "name": "KARIDIOULA GÉRARD",
+    "role": "Vice-Président",
+    "profession": "Éducateur",
+    "phone": "07 58 43 19 94",
+    "avatar": "👨‍🏫",
+    "photo": "/images/uploads/team/karidioula-gerard.jpg",
+    "order": 2,
+    "region": "Haut Sassandra"
+  },
+  {
+    "slug": "wilfrid-dandji",
+    "name": "WILFRID DIDIER DANDAN",
+    "role": "Secrétaire Général",
+    "profession": "Professeur",
+    "phone": "07 57 03 60 99",
+    "avatar": "👨‍🏫",
+    "photo": "/images/uploads/team/wilfrid-dandji.jpg",
+    "order": 3
+  },
+  {
+    "slug": "guy-gore",
+    "name": "GUY GORÉ CLÉMENT",
+    "role": "Secrétaire Général Adjoint",
+    "profession": "Instituteur",
+    "phone": "07 47 19 94 55",
+    "avatar": "👨‍🏫",
+    "photo": "/images/uploads/team/guy-gore.jpg",
+    "order": 4
+  },
+  {
+    "slug": "alphonsine-komenan",
+    "name": "KOMENAN VOH LOU TINAN ALPHONSINE",
+    "role": "Trésorière Générale",
+    "profession": "Commerçante",
+    "phone": "07 47 07 83 17",
+    "avatar": "👩‍💼",
+    "photo": "/images/uploads/team/alphonsine-komenan.jpg",
+    "order": 5
+  },
+  {
+    "slug": "adja-guy",
+    "name": "ADJA GUY",
+    "role": "Secrétaire à la Communication",
+    "profession": "Informaticien",
+    "phone": "05 06 12 87 82",
+    "avatar": "💻",
+    "photo": "/images/uploads/team/adja-guy.jpg",
+    "order": 6,
+    "region": "Agnéby-Tiassa"
   }
 ]

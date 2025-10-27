@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "rapport-activites-2025",
+    "title": "Présentation du Rapport d'Activités 2022-2024",
+    "date": "2025-04-02T00:00:00.000Z",
+    "icon": "📊",
+    "location": "Sikensi",
+    "description": "Présentation officielle du rapport triennal des activités de l'APD, suivi de l'installation formelle du Club APD des élèves de Sikensi.",
+    "details": "**Activités prévues :**\n- Installation du \"Club APD des élèves de Sikensi\"\n- Lancement du concours de poésie, dessin et chant\n- Thème : \"Œuvrons ensemble pour une paix durable en Côte d'Ivoire\"\n\n**Objectifs :**\n- Présenter le bilan des activités 2022-2024\n- Installer officiellement le club des élèves\n- Lancer un concours artistique pour la promotion de la paix",
+    "order": 1
+  },
+  {
+    "slug": "sensibilisation-cohesion-sociale",
+    "title": "Sensibilisation à la Cohésion Sociale",
+    "date": "2025-04-07T00:00:00.000Z",
+    "icon": "🎤",
+    "location": "Quartiers de Sikensi",
+    "description": "Campagne de proximité dans les différents quartiers de Sikensi pour promouvoir la paix et le vivre-ensemble entre les communautés.",
+    "details": "**Zones couvertes :**\n- Quartier résidentiel\n- Marché central\n- Zones périphériques\n\n**Thèmes abordés :**\n- Vivre-ensemble et cohésion sociale\n- Prévention des conflits communautaires\n- Promotion de la paix locale",
+    "order": 2
+  },
+  {
+    "slug": "atelier-processus-electoral",
+    "title": "Atelier sur le Processus Electoral",
+    "date": "2025-05-15T00:00:00.000Z",
+    "icon": "🎓",
+    "location": "Abidjan",
+    "description": "Formation organisée par la Commission Nationale des Droits de l'Homme (CNDH) pour renforcer la compréhension du processus électoral.",
+    "details": "**Objectifs :**\n- Maîtriser le processus électoral ivoirien\n- Comprendre les enjeux des élections 2025\n- Former des observateurs citoyens\n\n**Contenu :**\n- Cadre juridique des élections\n- Rôle des observateurs\n- Prévention des violences électorales",
+    "order": 3
+  },
+  {
+    "slug": "don-sang-juin-2025",
+    "title": "Journée Mondiale du Don de Sang",
+    "date": "2025-06-14T00:00:00.000Z",
+    "icon": "🩸",
+    "location": "Sikensi",
+    "description": "Opération de don de sang organisée en collaboration avec le Collectif des donneurs de sang de Sikensi (CD2S) pour célébrer la journée mondiale.",
+    "details": "**Partenaires :**\n- Collectif des donneurs de sang de Sikensi\n- Centre National de Transfusion Sanguine\n- Antenne d'Agboville\n\n**Objectifs :**\n- Sensibiliser sur l'importance du don de sang\n- Recruter de nouveaux donneurs réguliers\n- Renforcer la solidarité communautaire",
+    "order": 4
+  },
+  {
+    "slug": "marathon-paix-2025",
+    "title": "Marathon de la Paix",
+    "date": "2025-07-12T00:00:00.000Z",
+    "icon": "🏃",
+    "location": "Sikensi",
+    "description": "Grande manifestation sportive pour promouvoir la paix et la cohésion sociale à travers le sport.",
+    "details": "**Catégories :**\n- Course adultes hommes et femmes\n- Course jeunes\n- Marche de la paix\n\n**Partenaires :**\n- Commune de Sikensi\n- Associations sportives locales\n- Établissements scolaires",
+    "order": 5
+  },
+  {
+    "slug": "journee-internationale-paix",
+    "title": "Journée Internationale de la Paix",
+    "date": "2025-09-21T00:00:00.000Z",
+    "icon": "🕊️",
+    "location": "Agboville",
+    "description": "Célébration officielle de la Journée Internationale de la Paix avec déclaration de l'APD et activités de sensibilisation.",
+    "details": "**Programme :**\n- Déclaration officielle de l'APD\n- Prières interreligieuses\n- Activités culturelles\n- Plantation d'arbres de la paix\n\n**Public cible :**\n- Jeunes des écoles et universités\n- Leaders communautaires\n- Autorités locales",
+    "order": 6
+  },
+  {
+    "slug": "journee-nationale-paix-2025",
+    "title": "Journée Nationale de la Paix 2025",
+    "date": "2025-11-15T00:00:00.000Z",
+    "icon": "🎉",
+    "location": "Sikensi",
+    "description": "Célébration de la JNP 2025 avec un thème spécial valorisant le rôle des séniors dans la construction de la paix.",
+    "details": "**Thème :** \"Contribution des séniors à la paix en Côte d'Ivoire\"\n\n**Programme sportif :**\n- Football Maracana - Rencontre Séniors dames\n- Football Maracana - Rencontre Séniors hommes\n- Festivités et animations culturelles\n\n**Activités parallèles :**\n- Conférence-débat sur le thème\n- Exposition des œuvres des élèves\n- Cérémonie de remise de prix",
+    "order": 7
+  }
+]

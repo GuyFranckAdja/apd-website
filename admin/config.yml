@@ -41,7 +41,8 @@ collections:
       - { label: "Téléphone", name: "phone", widget: "string" }
       - { label: "Email", name: "email", widget: "string", required: false }
       - { label: "Région", name: "region", widget: "string", required: false }
-      - { label: "Icône Avatar", name: "avatar", widget: "string" }
+      - { label: "Photo du membre", name: "photo", widget: "image", required: false }
+      - { label: "Icône de secours", name: "avatar", widget: "string", required: false, default: "👤" }
       - { label: "Ordre d'affichage", name: "order", widget: "number", value_type: "int" }
 
   # Collection pour la galerie

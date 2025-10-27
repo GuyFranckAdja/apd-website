@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONG APD - Agir pour la Paix et le Développement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo-container svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            opacity: 0.95;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 2px solid white;
+            color: white;
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 95, 58, 0.95) 0%, rgba(45, 143, 92, 0.95) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect fill="url(%23pattern)" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.2) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a5f3a;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #1a5f3a, #ff9800);
+            border-radius: 2px;
+        }
+
+        .mission-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
+        }
+
+        .mission-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: #ff9800;
+        }
+
+        .activity-card h3 {
+            color: #1a5f3a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .activity-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .blog-section {
+            background: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a5f3a 0%, #ff9800 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .blog-content {
+            padding: 1.8rem;
+        }
+
+        .blog-date {
+            color: #ff9800;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-card h3 {
+            color: #1a5f3a;
+            margin: 0.8rem 0 1rem;
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #1a5f3a;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            color: #ff9800;
+            gap: 1rem;
+        }
+
+        /* Blog Article Page */
+        .article-hero {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .article-hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .article-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        .article-content h3 {
+            color: #1a5f3a;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .article-content h4 {
+            color: #2d8f5c;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .article-content p {
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: #444;
+            font-size: 1.05rem;
+        }
+
+        .article-content ul {
+            margin: 1rem 0 1.5rem 2rem;
+            line-height: 1.9;
+        }
+
+        .article-content ul li {
+            margin-bottom: 0.7rem;
+            color: #444;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-left: 4px solid #1a5f3a;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h4 {
+            color: #1a5f3a;
+            margin-top: 0;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .impact-stat {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .impact-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff9800;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .quote-box {
+            border-left: 4px solid #ff9800;
+            background: #fff8f0;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            border-radius: 8px;
+        }
+
+        .related-articles {
+            background: #f9f9f9;
+            padding: 3rem 2rem;
+        }
+
+        .related-articles h3 {
+            text-align: center;
+            color: #1a5f3a;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #1a5f3a 0%, #0d2f1c 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            color: #ff9800;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: #0d2f1c;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ff9800;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.7rem;
+            line-height: 1.6;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: #ff9800;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Gallery Styles */
+        .gallery-hero {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .gallery-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #1a5f3a;
+            color: #1a5f3a;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #1a5f3a;
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a5f3a 0%, #ff9800 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(26, 95, 58, 0.3) 0%, 
+                rgba(255, 152, 0, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .gallery-image-icon {
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-date {
+            color: #ff9800;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-item h3 {
+            color: #1a5f3a;
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .gallery-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .gallery-tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #1a5f3a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.7rem;
+        }
+
+        /* Styles pour les états de chargement et erreurs */
+        .loading-message, .no-content-message, .error-message {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #666;
+            grid-column: 1 / -1;
+        }
+
+        .loading-message p, .no-content-message p, .error-message p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-content-message a, .error-message a {
+            color: #1a5f3a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .no-content-message a:hover, .error-message a:hover {
+            color: #ff9800;
+        }
+
+        /* Animation de chargement */
+        .loading-message::before {
+            content: "⏳";
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 1rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Styles pour les photos des membres d'équipe */
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a5f3a 0%, #ff9800 100%);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .team-avatar-fallback {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .team-highlight .team-avatar {
+            background: white;
+            border: 4px solid #ff9800;
+        }
+
+        .team-highlight .team-avatar-fallback {
+            color: #1a5f3a;
+            font-size: 4rem;
+        }
+
+        /* Responsive pour les photos */
+        @media (max-width: 768px) {
+            .team-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .team-avatar-fallback {
+                font-size: 2.5rem;
+            }
+            
+            .team-highlight .team-avatar-fallback {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Styles pour le contenu markdown dans les articles */
+        .article-content ul {
+            margin: 1rem 0 1.5rem 2rem;
+            line-height: 1.9;
+        }
+
+        .article-content ul li {
+            margin-bottom: 0.7rem;
+            color: #444;
+        }
+
+        .article-content h2 {
+            color: #1a5f3a;
+            font-size: 2rem;
+            margin: 2.5rem 0 1rem 0;
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: #2d8f5c;
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .article-content h4 {
+            color: #ff9800;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        .article-content strong {
+            color: #1a5f3a;
+            font-weight: 700;
+        }
+
+        .article-content em {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Modal Lightbox */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            overflow: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 900px;
+            width: 90%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #1a5f3a 0%, #ff9800 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body h2 {
+            color: #1a5f3a;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body .gallery-date {
+            margin-bottom: 1rem;
+        }
+
+        .modal-body p {
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul {
+            margin: 1rem 0 1rem 2rem;
+            color: #444;
+        }
+
+        .modal-body ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .header-content {
+                justify-content: space-between;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                order: 3;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .activities-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+
+            .modal-image {
+                height: 300px;
+                font-size: 4rem;
+            }
+        }
+
+        /* Team Page Styles */
+        .team-hero {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .team-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .team-section {
+            padding: 3rem 0;
+        }
+
+        .team-section:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            color: #1a5f3a;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .team-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #1a5f3a, #ff9800);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: #ff9800;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a5f3a 0%, #ff9800 100%);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .team-member h3 {
+            color: #1a5f3a;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #ff9800;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .team-profession {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .team-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .team-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .team-highlight {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            border: none;
+        }
+
+        .team-highlight .team-avatar {
+            background: white;
+            color: #1a5f3a;
+            font-size: 4rem;
+        }
+
+        .team-highlight h3,
+        .team-highlight .team-role,
+        .team-highlight .team-profession,
+        .team-highlight .team-contact-item {
+            color: white;
+        }
+
+        .team-highlight .team-contact {
+            border-top-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .regional-delegates {
+            background: white;
+        }
+
+        .delegate-card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .delegate-card h4 {
+            color: #1a5f3a;
+            margin-bottom: 0.5rem;
+        }
+
+        .delegate-card p {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .org-structure {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .org-level {
+            text-align: center;
+        }
+
+        .org-box {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(26, 95, 58, 0.3);
+        }
+
+        .org-box.secondary {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+
+        .org-box.tertiary {
+            background: white;
+            color: #1a5f3a;
+            border: 2px solid #1a5f3a;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .team-highlight .team-avatar {
+                font-size: 3.5rem;
+            }
+
+            .org-box {
+                display: block;
+                margin: 0.5rem auto;
+                max-width: 90%;
+            }
+
+            .team-hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Plan Action Styles */
+        .plan-hero {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .plan-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .plan-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #1a5f3a, #ff9800);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            margin-left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a5f3a, #ff9800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .timeline-date {
+            background: linear-gradient(135deg, #1a5f3a, #2d8f5c);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content h3 {
+            color: #1a5f3a;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff9800;
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .event-details {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 3px solid #ff9800;
+        }
+
+        .event-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .event-details li {
+            padding: 0.3rem 0;
+            color: #555;
+        }
+
+        .event-details li::before {
+            content: '✓ ';
+            color: #1a5f3a;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+
+            .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+                margin-right: 0;
+            }
+
+            .timeline-marker {
+                left: 30px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .plan-hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Contact Form Styles */
+        .contact-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
+            padding: 4rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-info h2 {
+            color: #1a5f3a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: #e8f5e9;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1a5f3a, #ff9800);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-details h4 {
+            color: #1a5f3a;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details p {
+            color: #666;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-form-wrapper {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-form-wrapper h2 {
+            color: #1a5f3a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group label span {
+            color: #ff9800;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #1a5f3a;
+            box-shadow: 0 0 0 3px rgba(26, 95, 58, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d8f5c 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(26, 95, 58, 0.3);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 95, 58, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a5f3a, #ff9800);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(26, 95, 58, 0.3);
+        }
+
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-wrapper {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .contact-info h2,
+            .contact-form-wrapper h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .logo-text p {
+                font-size: 0.75rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .article-hero-icon {
+                font-size: 3.5rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1rem;
+            }
+
+            .logo-text p {
+                display: none;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Admin Link */
+        .admin-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1a5f3a;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .admin-link:hover {
+            background: #2d8f5c;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Link -->
+    <a href="/admin/" class="admin-link">⚙️ Admin</a>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-section" onclick="showPage('home')">
+                <div class="logo-container">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="140" r="30" fill="#FFA500"/>
+                        <path d="M100 110 L100 95 M85 115 L75 105 M115 115 L125 105 M85 125 L75 125 M115 125 L125 125 M85 135 L75 145 M115 135 L125 145" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+                        <ellipse cx="100" cy="60" rx="8" ry="10" fill="white"/>
+                        <circle cx="98" cy="58" r="1.5" fill="#333"/>
+                        <path d="M105 60 Q110 55 115 60" stroke="#666" stroke-width="1.5" fill="none"/>
+                        <path d="M92 60 Q70 45 60 50 Q65 55 80 60 Q85 62 92 63" fill="white" stroke="#ddd" stroke-width="0.5"/>
+                        <path d="M108 60 Q130 45 140 50 Q135 55 120 60 Q115 62 108 63" fill="white" stroke="#ddd" stroke-width="0.5"/>
+                        <path d="M45 80 Q40 70 50 65 L60 75 L55 85 Z" fill="#1a5f3a"/>
+                        <path d="M155 80 Q160 70 150 65 L140 75 L145 85 Z" fill="#1a5f3a"/>
+                        <path d="M40 160 Q100 150 160 160 L160 170 Q100 160 40 170 Z" fill="#FF8C00"/>
+                        <text x="100" y="168" text-anchor="middle" font-size="8" fill="white" font-weight="bold">Agir pour la Paix et le Développement</text>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>ONG APD</h1>
+                    <p>Agir pour la Paix et le Développement</p>
+                </div>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Accueil</a></li>
+                    <li><a href="#mission" onclick="scrollToSection('mission')">Mission</a></li>
+                    <li><a href="#activites" onclick="scrollToSection('activites')">Activités</a></li>
+                    <li><a href="#" onclick="showPage('equipe')">Notre Équipe</a></li>
+                    <li><a href="#" onclick="showPage('galerie')">Galerie</a></li>
+                    <li><a href="#" onclick="showPage('plan2025')">Plan 2025</a></li>
+                    <li><a href="#blog" onclick="scrollToSection('blog')">Blog</a></li>
+                    <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Œuvrons ensemble pour la paix et le développement en Côte d'Ivoire</h2>
+                <p>Depuis 2011, nous travaillons à la consolidation de la paix, à la promotion des valeurs civiques et démocratiques, et à la réalisation de projets socio-économiques en faveur des couches défavorisées.</p>
+                <button class="cta-button" onclick="scrollToSection('contact')">Nous Rejoindre</button>
+            </div>
+        </section>
+
+        <section class="mission-section" id="mission">
+            <div class="container">
+                <h2 class="section-title">Notre Mission</h2>
+                <div class="mission-content">
+                    <p>Créée le 5 novembre 2011 suite à la crise post-électorale de 2010-2011, l'ONG Agir pour la Paix et le Développement (APD) est un organe de veille au service du développement pacifique de la Côte d'Ivoire. Nous agissons dans le cadre de la réconciliation nationale et contribuons au raffermissement des relations entre les Ivoiriens et tous les habitants de la Côte d'Ivoire, quelles que soient leurs sensibilités.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>13+</h3>
+                        <p>Années d'engagement</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Activités réalisées</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5</h3>
+                        <p>Régions couvertes</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1000+</h3>
+                        <p>Personnes sensibilisées</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="activites">
+            <h2 class="section-title">Nos Domaines d'Action</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h3>🕊️ Consolidation de la Paix</h3>
+                    <p>Sensibilisation à la cohésion sociale, célébration de la Journée Nationale de la Paix, médiation entre communautés et guides religieux.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>📚 Éducation Civique</h3>
+                    <p>Formation des jeunes et élèves à la culture de la paix, au civisme et à l'entrepreneuriat à travers le Club APD des Élèves de Sikensi.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>🩸 Actions Humanitaires</h3>
+                    <p>Opérations de don de sang, soutien aux nouveaux-nés et familles vulnérables, mobilisation communautaire.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>🗳️ Observation Électorale</h3>
+                    <p>Surveillance des processus électoraux, promotion d'élections apaisées et sensibilisation contre la violence électorale.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>💼 Développement Économique</h3>
+                    <p>Formation à l'entrepreneuriat, sensibilisation aux opportunités numériques et accompagnement des jeunes.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>🤝 Cohésion Sociale</h3>
+                    <p>Renforcement des liens entre communautés, réconciliation et promotion du vivre-ensemble en Côte d'Ivoire.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-section" id="blog">
+            <div class="container">
+                <h2 class="section-title">Actualités & Blog</h2>
+                <div class="blog-grid" id="blog-grid">
+                    <!-- Le contenu du blog sera chargé dynamiquement par JavaScript -->
+                    <div class="loading-message">
+                        <p>Chargement des articles...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ARTICLE PAGE GENERIQUE -->
+    <div id="article" class="page">
+        <section class="article-hero">
+            <div class="container">
+                <div class="article-hero-icon" id="article-icon">📄</div>
+                <h1 id="article-title">Titre de l'article</h1>
+                <div class="article-meta">
+                    <div class="article-meta-item" id="article-date">📅 Date</div>
+                    <div class="article-meta-item" id="article-category">🏷️ Catégorie</div>
+                </div>
+                <a href="#" class="back-button" onclick="showPage('home')">← Retour au blog</a>
+            </div>
+        </section>
+
+        <div class="article-content" id="article-content">
+            <!-- Le contenu de l'article sera chargé dynamiquement -->
+        </div>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="galerie" class="page">
+        <section class="gallery-hero">
+            <div class="container">
+                <h1>📸 Galerie Photos</h1>
+                <p>Découvrez en images les moments forts de nos activités pour la paix et le développement</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" onclick="filterGallery('tous')">Tous</button>
+                <button class="filter-btn" onclick="filterGallery('paix')">Paix & Cohésion</button>
+                <button class="filter-btn" onclick="filterGallery('solidarite')">Solidarité</button>
+                <button class="filter-btn" onclick="filterGallery('jeunesse')">Jeunesse</button>
+                <button class="filter-btn" onclick="filterGallery('ceremonies')">Cérémonies</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Le contenu de la galerie sera chargé dynamiquement -->
+                <div class="loading-message">
+                    <p>Chargement de la galerie...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEAM PAGE -->
+    <div id="equipe" class="page">
+        <section class="team-hero">
+            <div class="container">
+                <h1>👥 Notre Équipe</h1>
+                <p>Découvrez les hommes et femmes engagés qui œuvrent au quotidien pour la paix, la cohésion sociale et le développement en Côte d'Ivoire</p>
+            </div>
+        </section>
+
+        <!-- Bureau Exécutif -->
+        <section class="team-section">
+            <div class="container">
+                <h2>Bureau Exécutif</h2>
+                <div class="team-grid" id="team-executive">
+                    <!-- Le contenu de l'équipe sera chargé dynamiquement -->
+                    <div class="loading-message">
+                        <p>Chargement des membres...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Délégués régionaux -->
+        <section class="team-section regional-delegates">
+            <div class="container">
+                <h2>🗺️ Délégués Régionaux</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 2rem;">L'APD est représentée dans 5 régions de la Côte d'Ivoire</p>
+                <div class="team-grid" id="regional-delegates">
+                    <!-- Le contenu des délégués sera chargé dynamiquement -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PLAN D'ACTION 2025 PAGE -->
+    <div id="plan2025" class="page">
+        <section class="plan-hero">
+            <div class="container">
+                <h1>📅 Plan d'Action 2025</h1>
+                <p>Découvrez notre feuille de route pour une année dédiée à la paix, à la cohésion sociale et au développement en Côte d'Ivoire</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="timeline" id="timeline">
+                <!-- Le contenu du plan d'action sera chargé dynamiquement -->
+                <div class="loading-message">
+                    <p>Chargement du plan d'action...</p>
+                </div>
+            </div>
+
+            <!-- Objectifs stratégiques 2025 -->
+            <div class="org-structure" style="margin-top: 4rem;">
+                <h2 style="text-align: center; color: #1a5f3a; margin-bottom: 2rem;">🎯 Objectifs Stratégiques 2025</h2>
+                <div style="background: #f9f9f9; padding: 2rem; border-radius: 10px; border-left: 4px solid #1a5f3a;">
+                    <h3 style="color: #1a5f3a; margin-bottom: 1rem;">Priorités de l'année</h3>
+                    <ul style="line-height: 2; color: #555;">
+                        <li><strong>Sensibilisation renforcée</strong> : Mener une sensibilisation soutenue dans les villes et zones rurales</li>
+                        <li><strong>Implication de la jeunesse</strong> : Intégrer les élèves dans les actions de paix et cohésion sociale</li>
+                        <li><strong>Formation continue</strong> : Poursuivre la formation des populations (jeunes et femmes)</li>
+                        <li><strong>Dialogue national</strong> : Initier des séances périodiques d'information et d'échanges</li>
+                        <li><strong>Transparence financière</strong> : Joindre un rapport financier au rapport d'activités</li>
+                        <li><strong>Plaidoyer institutionnel</strong> : Solliciter le financement auprès des institutions</li>
+                        <li><strong>Mobilisation de ressources</strong> : Élaborer une stratégie de financement des projets</li>
+                        <li><strong>Infrastructure</strong> : Achever les travaux du siège provisoire et planifier la construction du siège définitif</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lightbox -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <h2 id="modalTitle">Titre de la photo</h2>
+                <p class="gallery-date" id="modalDate">Date</p>
+            </div>
+            <div class="modal-image" id="modalImage">
+                <span id="modalIcon">📷</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalDescription"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <section class="contact-section">
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>📞 Contactez-nous</h2>
+                    <p>Vous avez une question, une suggestion ou souhaitez rejoindre nos actions pour la paix et le développement ? N'hésitez pas à nous contacter !</p>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Adresse</h4>
+                            <p>Sikensi, Région Agnéby-Tiassa<br>Côte d'Ivoire</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Téléphone</h4>
+                            <p>+225 07 08 13 92 51<br>+225 01 02 24 92 14</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>Président : Komenan Maurille<br>Contact via formulaire ci-contre</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div class="contact-details">
+                            <h4>Horaires</h4>
+                            <p>Lundi - Vendredi : 8h00 - 17h00<br>Samedi : 8h00 - 12h00</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: #1a5f3a; margin-bottom: 1rem;">Suivez-nous</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="Facebook">📘</a>
+                            <a href="#" class="social-link" title="WhatsApp">💬</a>
+                            <a href="#" class="social-link" title="Twitter">🐦</a>
+                            <a href="#" class="social-link" title="LinkedIn">💼</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2>✉️ Envoyez-nous un message</h2>
+                    
+                    <div id="formMessage" class="form-message"></div>
+
+                    <form id="contactForm" netlify>
+                        <div class="form-group">
+                            <label for="name">Nom complet <span>*</span></label>
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Votre nom et prénom">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email <span>*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="votre.email@exemple.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+225 XX XX XX XX XX">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Sujet <span>*</span></label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">-- Sélectionnez un sujet --</option>
+                                <option value="adhesion">Adhésion à l'APD</option>
+                                <option value="partenariat">Proposition de partenariat</option>
+                                <option value="benevolat">Bénévolat</option>
+                                <option value="don">Don / Soutien financier</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="invitation">Invitation à un événement</option>
+                                <option value="media">Média / Presse</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message <span>*</span></label>
+                            <textarea id="message" name="message" class="form-control" required placeholder="Écrivez votre message ici..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span id="btnText">📨 Envoyer le message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Info -->
+        <div style="background: #0d2f1c; color: white; padding: 3rem 2rem 1rem;">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>À propos de l'APD</h3>
+                <p>L'ONG Agir pour la Paix et le Développement œuvre depuis 2011 pour la consolidation de la paix, la promotion des valeurs civiques et le développement socio-économique en Côte d'Ivoire.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Accueil</a></li>
+                    <li><a href="#" onclick="showPage('equipe')">Notre Équipe</a></li>
+                    <li><a href="#" onclick="showPage('plan2025')">Plan d'Action 2025</a></li>
+                    <li><a href="#" onclick="showPage('galerie')">Galerie Photos</a></li>
+                    <li><a href="#mission" onclick="scrollToSection('mission')">Notre Mission</a></li>
+                    <li><a href="#activites" onclick="scrollToSection('activites')">Nos Activités</a></li>
+                    <li><a href="#blog" onclick="scrollToSection('blog')">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Nous Contacter</h3>
+                <ul>
+                    <li>📍 Sikensi, Côte d'Ivoire</li>
+                    <li>📞 +225 07 08 13 92 51</li>
+                    <li>📞 +225 01 02 24 92 14</li>
+                    <li>✉️ Président: Komenan Maurille</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <ul>
+                    <li><a href="#">📘 Facebook: ONG APD</a></li>
+                    <li><a href="#">💬 Groupe WhatsApp</a></li>
+                    <li><a href="/admin/">⚙️ Interface d'administration</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 ONG APD - Agir pour la Paix et le Développement. Tous droits réservés.</p>
+        </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/admin-loader.js"></script>
+    <script>
+        // Fonctions de navigation de base
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Close mobile menu if open
+            if (window.innerWidth <= 992) {
+                document.getElementById('mainNav').classList.remove('active');
+            }
+        }
+
+        function showArticle(articleSlug) {
+            // Cette fonction sera implémentée dans admin-loader.js
+            console.log('Article à charger:', articleSlug);
+        }
+
+        function scrollToSection(sectionId) {
+            // First ensure we're on home page
+            showPage('home');
+            
+            // Wait a bit for page to render, then scroll
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+
+        // Gallery filter function
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'tous') {
+                    item.classList.remove('hidden');
+                } else {
+                    const categories = item.getAttribute('data-category');
+                    if (categories && categories.includes(category)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        // Modal functions
+        function openModal(photoId) {
+            const modal = document.getElementById('photoModal');
+            // Cette fonction sera complétée par le chargement dynamique
+            console.log('Ouvrir modal pour:', photoId);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('photoModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('photoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Close menu when clicking on a link (mobile)
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    document.getElementById('mainNav').classList.remove('active');
+                }
+            });
+        });
+
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Validate form
+            if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+                showMessage('Veuillez remplir tous les champs obligatoires.', 'error');
+                return;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                showMessage('Veuillez entrer une adresse email valide.', 'error');
+                return;
+            }
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            btnText.textContent = '⏳ Envoi en cours...';
+            
+            // Netlify Forms gère l'envoi automatiquement grâce à l'attribut 'netlify'
+            showMessage('✅ Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.', 'success');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Re-enable button
+            submitBtn.disabled = false;
+            btnText.textContent = '📨 Envoyer le message';
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        
+        function showMessage(message, type) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            
+            // Auto hide after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
+
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+        // Gestion de l'authentification Netlify
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
