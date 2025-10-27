@@ -1,0 +1,75 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: "Création de {{collection}} : « {{slug }} »"
+    update: "Mise à jour de {{collection}} : « {{slug }} »"
+    delete: "Suppression de {{collection}} : « {{slug }} »"
+    uploadMedia: "Téléversement de « {{path }} »"
+    deleteMedia: "Suppression de « {{path }} »"
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # Collection pour les articles de blog
+  - name: "blog"
+    label: "Articles de Blog"
+    folder: "data/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Icône", name: "icon", widget: "string" }
+      - { label: "Catégorie", name: "category", widget: "string" }
+      - { label: "Extrait", name: "excerpt", widget: "text" }
+      - { label: "Contenu", name: "body", widget: "markdown" }
+      - { label: "Image de couverture", name: "cover", widget: "image", required: false }
+
+  # Collection pour l'équipe
+  - name: "team"
+    label: "Membres de l'Équipe"
+    folder: "data/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nom", name: "name", widget: "string" }
+      - { label: "Rôle", name: "role", widget: "string" }
+      - { label: "Profession", name: "profession", widget: "string" }
+      - { label: "Téléphone", name: "phone", widget: "string" }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Région", name: "region", widget: "string", required: false }
+      - { label: "Icône Avatar", name: "avatar", widget: "string" }
+      - { label: "Ordre d'affichage", name: "order", widget: "number", value_type: "int" }
+
+  # Collection pour la galerie
+  - name: "gallery"
+    label: "Galerie Photos"
+    folder: "data/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Icône", name: "icon", widget: "string" }
+      - { label: "Catégories", name: "categories", widget: "list" }
+      - { label: "Description courte", name: "description", widget: "text" }
+      - { label: "Contenu détaillé", name: "body", widget: "markdown" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+
+  # Collection pour le plan d'action
+  - name: "plan"
+    label: "Plan d'Action"
+    folder: "data/plan"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Icône", name: "icon", widget: "string" }
+      - { label: "Lieu", name: "location", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Détails", name: "details", widget: "markdown" }
+      - { label: "Ordre", name: "order", widget: "number", value_type: "int" }
