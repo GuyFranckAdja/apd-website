@@ -57,9 +57,10 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        .logo-container svg {
+        .logo-container img {
             width: 100%;
             height: 100%;
+            object-fit: contain;
         }
 
         .logo-text h1 {
@@ -1629,6 +1630,12 @@
             box-shadow: 0 5px 15px rgba(26, 95, 58, 0.3);
         }
 
+        .social-link img {
+            width: 22px;
+            height: 22px;
+            display: block;
+        }
+
         @media (max-width: 992px) {
             .contact-container {
                 grid-template-columns: 1fr;
@@ -1745,19 +1752,7 @@
         <div class="header-content">
             <div class="logo-section" onclick="showPage('home')">
                 <div class="logo-container">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="140" r="30" fill="#FFA500"/>
-                        <path d="M100 110 L100 95 M85 115 L75 105 M115 115 L125 105 M85 125 L75 125 M115 125 L125 125 M85 135 L75 145 M115 135 L125 145" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
-                        <ellipse cx="100" cy="60" rx="8" ry="10" fill="white"/>
-                        <circle cx="98" cy="58" r="1.5" fill="#333"/>
-                        <path d="M105 60 Q110 55 115 60" stroke="#666" stroke-width="1.5" fill="none"/>
-                        <path d="M92 60 Q70 45 60 50 Q65 55 80 60 Q85 62 92 63" fill="white" stroke="#ddd" stroke-width="0.5"/>
-                        <path d="M108 60 Q130 45 140 50 Q135 55 120 60 Q115 62 108 63" fill="white" stroke="#ddd" stroke-width="0.5"/>
-                        <path d="M45 80 Q40 70 50 65 L60 75 L55 85 Z" fill="#1a5f3a"/>
-                        <path d="M155 80 Q160 70 150 65 L140 75 L145 85 Z" fill="#1a5f3a"/>
-                        <path d="M40 160 Q100 150 160 160 L160 170 Q100 160 40 170 Z" fill="#FF8C00"/>
-                        <text x="100" y="168" text-anchor="middle" font-size="8" fill="white" font-weight="bold">Agir pour la Paix et le Développement</text>
-                    </svg>
+                    <img src="/images/uploads/logo.svg" alt="Logo APD">
                 </div>
                 <div class="logo-text">
                     <h1>ONG APD</h1>
@@ -2042,10 +2037,18 @@
                     <div style="margin-top: 2rem;">
                         <h4 style="color: #1a5f3a; margin-bottom: 1rem;">Suivez-nous</h4>
                         <div class="social-links">
-                            <a href="#" class="social-link" title="Facebook">📘</a>
-                            <a href="#" class="social-link" title="WhatsApp">💬</a>
-                            <a href="#" class="social-link" title="Twitter">🐦</a>
-                            <a href="#" class="social-link" title="LinkedIn">💼</a>
+                            <a href="#" class="social-link" title="Facebook" aria-label="Facebook">
+                                <img src="/images/uploads/social/facebook.svg" alt="Facebook" />
+                            </a>
+                            <a href="#" class="social-link" title="Twitter" aria-label="Twitter">
+                                <img src="/images/uploads/social/twitter.svg" alt="Twitter" />
+                            </a>
+                            <a href="#" class="social-link" title="Instagram" aria-label="Instagram">
+                                <img src="/images/uploads/social/instagram.svg" alt="Instagram" />
+                            </a>
+                            <a href="#" class="social-link" title="YouTube" aria-label="YouTube">
+                                <img src="/images/uploads/social/youtube.svg" alt="YouTube" />
+                            </a>
                         </div>
                     </div>
                 </div>
